@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Search Game</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      width: 30px;
+      height: 30px;
+      border: 1px solid black;
+      text-align: center;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .highlight {
+      background-color: grey;
+    }
+  </style>
+</head>
+<body>
+
+<p id="wordCount"></p>
+
+<table id="grid"></table>
+
+<script>
+  const rows = 10;
+  const cols = 10;
+  const wordsToChooseFrom = ['HELSINKI', 'TAMPERE', 'JYVÄSKYLÄ', 'OULU', 'KEURUU', 'LAHTI'];
+  let remainingWords;
+
+  function getRandomCharacter() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZOÄÖ';
+    return characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  function generateEmptyGrid(rows, cols) {
+    const grid = [];
+    for (let i = 0; i < rows; i++) {
+      const row = [];
+      for (let j = 0; j < cols; j++) {
+        row.push('');
+      }
+      grid.push(row);
+    }
+    return grid;
+  }
+
+  function placeWords(grid, words) {
+    let placedWordsCount = 0;
+    words.forEach(word => {
+      let placed = false;
+      while (!placed) {
+        const direction = Math.random() < 0.5 ? 'vertical' : 'horizontal';
+        const length = word.length;
+        let startRow, startCol;
+        if (direction === 'vertical') {
+          startRow = Math.floor(Math.random() * (rows - length + 1));
+          startCol = Math.floor(Math.random() * cols);
+          if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
+            for (let i = 0; i < length; i++) {
+              grid[startRow + i][startCol] = word[i];
+            }
+            placed = true;
+          }
+        } else {
+          startRow = Math.floor(Math.random() * rows);
+          startCol = Math.floor(Math.random() * (cols - length + 1));
+          if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
+            for (let i = 0; i < length; i++) {
+              grid[startRow][startCol + i] = word[i];
+            }
+            placed = true;
+          }
+        }
+      }
+      if (placed) {
+        placedWordsCount++;
+      }
+    });
+    return placedWordsCount;
+  }
+
+  function checkOverlap(grid, word, startRow, startCol, length, direction) {
+    if (direction === 'vertical') {
+      for (let i = 0; i < length; i++) {
+        if (grid[startRow + i][startCol] !== '' && grid[startRow + i][startCol] !== word[i]) {
+          return false;
+        }
+      }
+    } else {
+      for (let i = 0; i < length; i++) {
+        if (grid[startRow][startCol + i] !== '' && grid[startRow][startCol + i] !== word[i]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function displayGrid(grid) {
+    const table = document.getElementById('grid');
+    for (let i = 0; i < rows; i++) {
+      const row = document.createElement('tr');
+      for (let j = 0; j < cols; j++) {
+        const cell = document.createElement('td');
+        cell.textContent = grid[i][j] || getRandomCharacter();
+        if (grid[i][j] !== '') {
+          cell.classList.add('highlight');
+        }
+        cell.addEventListener('click', () => handleClick(i, j));
+        row.appendChild(cell);
+      }
+      table.appendChild(row);
+    }
+  }
+
+  function handleClick(row, col) {
+    const selectedCell = document.getElementById('grid').rows[row].cells[col];
+    if (!selectedCell.classList.contains('highlighted')) {
+      selectedCell.classList.add('highlighted');
+      checkWord(row, col);
+    }
+  }
+
+  function checkWord(row, col) {
+    const grid = document.getElementById('grid');
+    const cell = grid.rows[row].cells[col];
+    const cellContent = cell.textContent;
+
+    let word = '';
+    for (let i = col; i >= 0; i--) {
+      const currentCell = grid.rows[row].cells[i];
+      word = currentCell.textContent + word;
+      if (word.length > 1 && wordsToChooseFrom.includes(word)) {
+        wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
+        remainingWords--;
+        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
+        highlightWord(row, i, row, col);
+        break;
+      }
+    }
+    word = '';
+    for (let i = col; i < cols; i++) {
+      const currentCell = grid.rows[row].cells[i];
+      word += currentCell.textContent;
+      if (word.length > 1 && wordsToChooseFrom.includes(word)) {
+        wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
+        remainingWords--;
+        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
+        highlightWord(row, col, row, i);
+        break;
+      }
+    }
+
+    word = '';
+    for (let i = row; i >= 0; i--) {
+      const currentCell = grid.rows[i].cells[col];
+      word = currentCell.textContent + word;
+      if (word.length > 1 && wordsToChooseFrom.includes(word)) {
+        wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
+        remainingWords--;
+        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
+        highlightWord(i, col, row, col);
+        break;
+      }
+    }
+    word = '';
+    for (let i = row; i < rows; i++) {
+      const currentCell = grid.rows[i].cells[col];
+      word += currentCell.textContent;
+      if (word.length > 1 && wordsToChooseFrom.includes(word)) {
+        wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
+        remainingWords--;
+        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
+        highlightWord(row, col, i, col);
+        break;
+      }
+    }
+  }
+
+  function highlightWord(startRow, startCol, endRow, endCol) {
+    const grid = document.getElementById('grid');
+    for (let i = startRow; i <= endRow; i++) {
+      for (let j = startCol; j <= endCol; j++) {
+        grid.rows[i].cells[j].classList.add('highlighted');
+      }
+    }
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const emptyGrid = generateEmptyGrid(rows, cols);
+  shuffleArray(wordsToChooseFrom);
+  const placedWordsCount = placeWords(emptyGrid, wordsToChooseFrom.slice(0, 4));
+  remainingWords = placedWordsCount;
+  displayGrid(emptyGrid);
+  document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
+
+</script>
+</body>
+</html>
