@@ -3,21 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Word Search Game</title>
+  <title>Mosaiikki Best Seller</title>
   <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
     table {
       border-collapse: collapse;
     }
     td {
-      width: 30px;
-      height: 30px;
-      border: 1px solid black;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #baada0;
+      background-color: #ccc0b4;
       text-align: center;
+      font-family: arial black, sans-serif;
       font-size: 20px;
       cursor: pointer;
     }
-    .highlight {
-      background-color: grey;
+    #wordCount {
+      text-align: center;
+      font-family: arial black, sans-serif;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    #svgContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -25,7 +47,10 @@
 
 <p id="wordCount"></p>
 
-<table id="grid"></table>
+<div style="position: relative;">
+  <table id="grid"></table>
+  <svg id="svgContainer"></svg>
+</div>
 
 <script>
   const rows = 10;
@@ -131,7 +156,6 @@
     const grid = document.getElementById('grid');
     const cell = grid.rows[row].cells[col];
     const cellContent = cell.textContent;
-
     let word = '';
     for (let i = col; i >= 0; i--) {
       const currentCell = grid.rows[row].cells[i];
@@ -139,8 +163,8 @@
       if (word.length > 1 && wordsToChooseFrom.includes(word)) {
         wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
         remainingWords--;
-        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
-        highlightWord(row, i, row, col);
+        document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+        drawLine(row, i, row, col);
         break;
       }
     }
@@ -151,12 +175,11 @@
       if (word.length > 1 && wordsToChooseFrom.includes(word)) {
         wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
         remainingWords--;
-        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
-        highlightWord(row, col, row, i);
+        document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+        drawLine(row, col, row, i);
         break;
       }
     }
-
     word = '';
     for (let i = row; i >= 0; i--) {
       const currentCell = grid.rows[i].cells[col];
@@ -164,8 +187,8 @@
       if (word.length > 1 && wordsToChooseFrom.includes(word)) {
         wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
         remainingWords--;
-        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
-        highlightWord(i, col, row, col);
+        document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+        drawLine(i, col, row, col);
         break;
       }
     }
@@ -176,20 +199,27 @@
       if (word.length > 1 && wordsToChooseFrom.includes(word)) {
         wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
         remainingWords--;
-        document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
-        highlightWord(row, col, i, col);
+        document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+        drawLine(row, col, i, col);
         break;
       }
     }
   }
 
-  function highlightWord(startRow, startCol, endRow, endCol) {
+  function drawLine(startRow, startCol, endRow, endCol) {
     const grid = document.getElementById('grid');
-    for (let i = startRow; i <= endRow; i++) {
-      for (let j = startCol; j <= endCol; j++) {
-        grid.rows[i].cells[j].classList.add('highlighted');
-      }
-    }
+    const cellWidth = grid.rows[startRow].cells[startCol].offsetWidth;
+    const cellHeight = grid.rows[startRow].cells[startCol].offsetHeight;
+    const svgContainer = document.getElementById('svgContainer');
+    const svgns = "http://www.w3.org/2000/svg";
+    const line = document.createElementNS(svgns, 'line');
+    line.setAttribute('x1', startCol * cellWidth + cellWidth / 2 + 2);
+    line.setAttribute('y1', startRow * cellHeight + cellHeight / 2);
+    line.setAttribute('x2', endCol * cellWidth + cellWidth / 2 + 2);
+    line.setAttribute('y2', endRow * cellHeight + cellHeight / 2);
+    line.setAttribute('stroke', 'black');
+    line.setAttribute('stroke-width', '3');
+    svgContainer.appendChild(line);
   }
 
   function shuffleArray(array) {
@@ -205,7 +235,7 @@
   const placedWordsCount = placeWords(emptyGrid, wordsToChooseFrom.slice(0, 4));
   remainingWords = placedWordsCount;
   displayGrid(emptyGrid);
-  document.getElementById('wordCount').textContent = `Remaining words: ${remainingWords}`;
+  document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
 
 </script>
 </body>
