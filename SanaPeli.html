@@ -49,6 +49,8 @@
 </head>
 <body>
 
+<input type="submit" onclick="resetGame(10, 10, 1)" value="Test">
+
 <p id="wordCount"></p>
 
 <div style="position: relative;">
@@ -260,6 +262,24 @@
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    }
+
+    function resetGame(rows, columns, wordAmount) {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = '';
+        const svgContainer = document.getElementById('svgContainer');
+        svgContainer.innerHTML = '';
+        remainingWords = wordAmount;
+        const words = getRandomWords(wordAmount);
+        const emptyGrid = generateEmptyGrid(rows, columns);
+        generateWords(emptyGrid, words);
+        displayGrid(emptyGrid);
+        document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+    }
+
+    function getRandomWords(wordAmount) {
+        const shuffledWords = shuffleArray(wordsToChooseFrom);
+        return shuffledWords.slice(0, wordAmount);
     }
 
     const emptyGrid = generateEmptyGrid(rows, cols);
