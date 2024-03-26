@@ -49,31 +49,53 @@
 </head>
 <body>
 
-<input type="submit" onclick="resetGame(10, 10, 1)" value="Test">
+<div id="gameScreen">
+    <p id="wordCount"></p>
 
-<p id="wordCount"></p>
+    <div style="position: relative;">
+        <table id="grid"></table>
+        <svg id="svgContainer"></svg>
+    </div>
+</div>
 
-<div style="position: relative;">
-  <table id="grid"></table>
-  <svg id="svgContainer"></svg>
+<div id="nextDifficultyScreen" style="display: none;">
+    <input type="submit" onclick="resetGame()" value="Seuraava Taso">
 </div>
 
 <script>
-    const rows = 10;
-    const cols = 10;
-    const wordsToChooseFrom = ['HELSINKI', 'TAMPERE', 'JYVÄSKYLÄ', 'OULU', 'KEURUU', 'LAHTI'];
+    const wordsToChooseFrom = ['HELSINKI', 'TAMPERE', 'JYVÄSKYLÄ', 'OULU', 'KEURUU', 'LAHTI', 'JÄMSÄ', 'ROVANIEMI', 'SEINÄJOKI', 'ÄÄNEKOSKI'];
     let remainingWords;
+
+    let currentDifficulty = 'easy';
+
+    const difficulties = {
+        easy: {
+            rows: 10,
+            columns: 10,
+            wordAmount: 4
+        },
+        normal: {
+            rows: 12,
+            columns: 12,
+            wordAmount: 6
+        },
+        hard: {
+            rows: 15,
+            columns: 15,
+            wordAmount: 8
+        }
+    };
 
     function getRandomCharacter() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZOÄÖ';
         return characters.charAt(Math.floor(Math.random() * characters.length));
     }
 
-    function generateEmptyGrid(rows, cols) {
+    function generateEmptyGrid(rows, columns) {
         const grid = [];
         for (let i = 0; i < rows; i++) {
             const row = [];
-            for (let j = 0; j < cols; j++) {
+            for (let j = 0; j < columns; j++) {
                 row.push('');
             }
             grid.push(row);
@@ -91,7 +113,7 @@
                 let startRow, startCol;
                 if (direction === 'vertical') {
                     startRow = Math.floor(Math.random() * (rows - length + 1));
-                    startCol = Math.floor(Math.random() * cols);
+                    startCol = Math.floor(Math.random() * columns);
                     if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
                         for (let i = 0; i < length; i++) {
                             grid[startRow + i][startCol] = word[i];
@@ -100,7 +122,7 @@
                     }
                 } else {
                     startRow = Math.floor(Math.random() * rows);
-                    startCol = Math.floor(Math.random() * (cols - length + 1));
+                    startCol = Math.floor(Math.random() * (columns - length + 1));
                     if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
                         for (let i = 0; i < length; i++) {
                             grid[startRow][startCol + i] = word[i];
@@ -133,11 +155,11 @@
         return true;
     }
 
-    function displayGrid(grid) {
+    function displayGrid(grid, rows, columns) {
         const table = document.getElementById('grid');
         for (let i = 0; i < rows; i++) {
             const row = document.createElement('tr');
-            for (let j = 0; j < cols; j++) {
+            for (let j = 0; j < columns; j++) {
                 const cell = document.createElement('td');
                 cell.textContent = grid[i][j] || getRandomCharacter();
                 row.appendChild(cell);
@@ -222,9 +244,18 @@
         if (wordsToChooseFrom.includes(word)) {
             wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
             remainingWords--;
-            document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+            document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
             drawLine(startCell.row, startCell.col, endCell.row, endCell.col);
         }
+
+        if(remainingWords === 0) {
+            showNextDifficultyScreen();
+        }
+    }
+
+    function showNextDifficultyScreen() {
+        document.getElementById('gameScreen').style.display = 'none';
+        document.getElementById('nextDifficultyScreen').style.display = 'block';
     }
 
     function resetSelection() {
@@ -264,7 +295,19 @@
         return array;
     }
 
-    function resetGame(rows, columns, wordAmount) {
+    function moveToNextDifficulty() {
+        if(currentDifficulty === 'easy') {
+            currentDifficulty = 'normal';
+        } else if(currentDifficulty === 'normal') {
+            currentDifficulty = 'hard';
+        }
+    }
+
+    function resetGame() {
+        document.getElementById('gameScreen').style.display = 'block';
+        document.getElementById('nextDifficultyScreen').style.display = 'none';
+        moveToNextDifficulty();
+        const { rows, columns, wordAmount} = difficulties[currentDifficulty];
         const grid = document.getElementById('grid');
         grid.innerHTML = '';
         const svgContainer = document.getElementById('svgContainer');
@@ -273,8 +316,8 @@
         const words = getRandomWords(wordAmount);
         const emptyGrid = generateEmptyGrid(rows, columns);
         generateWords(emptyGrid, words);
-        displayGrid(emptyGrid);
-        document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+        displayGrid(emptyGrid, rows, columns);
+        document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
     }
 
     function getRandomWords(wordAmount) {
@@ -282,12 +325,14 @@
         return shuffledWords.slice(0, wordAmount);
     }
 
-    const emptyGrid = generateEmptyGrid(rows, cols);
+    const { rows, columns, wordAmount } = difficulties[currentDifficulty];
+    const emptyGrid = generateEmptyGrid(rows, columns);
     shuffleArray(wordsToChooseFrom);
-    const placedWordsCount = generateWords(emptyGrid, wordsToChooseFrom.slice(0, 4));
+    const words = getRandomWords(wordAmount);
+    const placedWordsCount = generateWords(emptyGrid, words);
     remainingWords = placedWordsCount;
-    displayGrid(emptyGrid);
-    document.getElementById('wordCount').textContent = `Jäljellä olevat sanat: ${remainingWords}`;
+    displayGrid(emptyGrid, rows, columns);
+    document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
 
 </script>
 </body>
