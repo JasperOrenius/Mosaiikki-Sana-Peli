@@ -68,21 +68,27 @@
 
     let currentDifficulty = 'easy';
 
+    const words = {
+        easy : ['OULU', 'JÄMSÄ', 'LAHTI', 'KEURUU'],
+        normal : ['HELSINKI', 'TAMPERE', 'OULU', 'JÄMSÄ', 'LAHTI', 'KEURUU'],
+        hard : ['ROVANIEMI', 'JYVÄSKYLÄ', 'ÄÄNEKOSKI', 'HELSINKI', 'TAMPERE', 'OULU', 'JÄMSÄ', 'LAHTI', 'KEURUU']
+    };
+
     const difficulties = {
         easy: {
-            rows: 10,
-            columns: 10,
-            wordAmount: 4
+            rows: 6,
+            columns: 6,
+            wordAmount: 2
         },
         normal: {
-            rows: 12,
-            columns: 12,
-            wordAmount: 6
+            rows: 8,
+            columns: 8,
+            wordAmount: 4
         },
         hard: {
-            rows: 15,
-            columns: 15,
-            wordAmount: 8
+            rows: 10,
+            columns: 10,
+            wordAmount: 6
         }
     };
 
@@ -104,8 +110,11 @@
     }
 
     function generateWords(grid, words) {
+        const { rows, columns, wordAmount } = difficulties[currentDifficulty];
         let placedWordsCount = 0;
-        words.forEach(word => {
+        const shuffledWords = shuffleArray(words);
+        for (let i = 0; i < wordAmount && i < shuffledWords.length; i++) {
+            const word = shuffledWords[i];
             let placed = false;
             while (!placed) {
                 const direction = Math.random() < 0.5 ? 'vertical' : 'horizontal';
@@ -114,27 +123,25 @@
                 if (direction === 'vertical') {
                     startRow = Math.floor(Math.random() * (rows - length + 1));
                     startCol = Math.floor(Math.random() * columns);
-                    if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
-                        for (let i = 0; i < length; i++) {
-                            grid[startRow + i][startCol] = word[i];
-                        }
-                        placed = true;
-                    }
                 } else {
                     startRow = Math.floor(Math.random() * rows);
                     startCol = Math.floor(Math.random() * (columns - length + 1));
-                    if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
-                        for (let i = 0; i < length; i++) {
-                            grid[startRow][startCol + i] = word[i];
+                }
+                if (checkOverlap(grid, word, startRow, startCol, length, direction)) {
+                    if (direction === 'vertical') {
+                        for (let j = 0; j < length; j++) {
+                            grid[startRow + j][startCol] = word[j];
                         }
-                        placed = true;
+                    } else {
+                        for (let j = 0; j < length; j++) {
+                            grid[startRow][startCol + j] = word[j];
+                        }
                     }
+                    placed = true;
+                    placedWordsCount++;
                 }
             }
-            if (placed) {
-                placedWordsCount++;
-            }
-        });
+        }
         return placedWordsCount;
     }
 
@@ -244,6 +251,7 @@
         if (wordsToChooseFrom.includes(word)) {
             wordsToChooseFrom.splice(wordsToChooseFrom.indexOf(word), 1);
             remainingWords--;
+            const { wordAmount } = difficulties[currentDifficulty];
             document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
             drawLine(startCell.row, startCell.col, endCell.row, endCell.col);
         }
@@ -321,15 +329,16 @@
     }
 
     function getRandomWords(wordAmount) {
-        const shuffledWords = shuffleArray(wordsToChooseFrom);
+        const difficultyWords = words[currentDifficulty];
+        const shuffledWords = shuffleArray(difficultyWords);
         return shuffledWords.slice(0, wordAmount);
     }
 
     const { rows, columns, wordAmount } = difficulties[currentDifficulty];
     const emptyGrid = generateEmptyGrid(rows, columns);
     shuffleArray(wordsToChooseFrom);
-    const words = getRandomWords(wordAmount);
-    const placedWordsCount = generateWords(emptyGrid, words);
+    const words_ = getRandomWords(wordAmount);
+    const placedWordsCount = generateWords(emptyGrid, words_);
     remainingWords = placedWordsCount;
     displayGrid(emptyGrid, rows, columns);
     document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
