@@ -31,6 +31,7 @@ td {
   justify-content: center;
   position: absolute;
   top: 10px;
+  background-color: lightblue;
 }
 #grid {
   overflow-y: auto;
@@ -101,6 +102,13 @@ td {
   position: relative;
   margin-top: 10px;
   right: 195px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid black;
+  font-family: arial black, sans-serif;
+  background-color: red;
+  box-shadow: 0 3px 5px black;
 }
 #wordList {
   display: none;
