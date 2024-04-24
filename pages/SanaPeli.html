@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mosaiikki Best Seller</title>
+  <link rel="stylesheet" href="../css/pelistyle.css"> 
+</head>
+<body>
+    <div id="gameScreen">
+        <button id="helpButton" onclick="toggleWordList()">?</button>
+        <p id="wordCount"></p>
+        <table id="grid"></table>
+        <div id="wordList">
+            <h2>Löydettävät Sanat</h2>
+            <ul id="wordListItems"></ul>
+        </div>
+    </div>
+    <div id="nextDifficultyScreen" style="display: none;">
+        <input type="submit" onclick="resetGame()" value="Seuraava Taso">
+        <p>Paina nappia jatkaaksesi eteenpäin</p>
+        <div class="credits">Credits: Tiia Monto<br></div>
+    </div>
+    <script src="../javascript/peli.js"></script>
+</body>
+</html>
