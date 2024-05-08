@@ -8,8 +8,11 @@
 </head>
 <body>
     <div id="gameScreen">
-        <button id="helpButton" onclick="toggleWordList()">?</button>
-        <p id="wordCount"></p>
+        <div id="gameUI">
+            <p id="wordCount"></p>
+            <button id="helpButton" onclick="toggleWordList()">?</button>
+            <button id="exitButton">X</button>
+        </div>
         <table id="grid"></table>
         <div id="wordList">
             <h2>Löydettävät Sanat</h2>
