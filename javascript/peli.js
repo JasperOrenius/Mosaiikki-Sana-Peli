@@ -149,6 +149,10 @@ document.addEventListener('mousedown', handleMouseDown);
 document.addEventListener('mousemove', handleMouseMove);
 document.addEventListener('mouseup', handleMouseUp);
 
+document.addEventListener('touchstart', handleTouchStart);
+document.addEventListener('touchmove', handleTouchMove);
+document.addEventListener('touchend', handleTouchEnd);
+
 function handleMouseDown(event) {
     isDragging = true;
     startCell = getCellFromEvent(event);
@@ -174,8 +178,37 @@ function handleMouseUp(event) {
     }
 }
 
+function handleTouchStart(event) {
+    const touch = event.touches[0];
+    startCell = getCellFromTouchEvent(touch);
+}
+
+function handleTouchMove(event) {
+    event.preventDefault();
+    const touch = event.touches[0];
+    endCell = getCellFromTouchEvent(touch);
+    highlightCells(startCell, endCell);
+}
+
+function handleTouchEnd(event) {
+    if (startCell && endCell) {
+        checkWord(startCell, endCell);
+    }
+    resetSelection();
+}
+
 function getCellFromEvent(event) {
     const target = event.target;
+    if (target.tagName === 'TD') {
+        const row = target.parentNode.rowIndex;
+        const col = target.cellIndex;
+        return { row, col };
+    }
+    return null;
+}
+
+function getCellFromTouchEvent(touch) {
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
     if (target.tagName === 'TD') {
         const row = target.parentNode.rowIndex;
         const col = target.cellIndex;
