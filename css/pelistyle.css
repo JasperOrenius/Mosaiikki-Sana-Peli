@@ -115,12 +115,12 @@ td {
   width: 45px;
   border-radius: 50%;
   border: 1px transparent;
-  font-family: arial black, sans-serif;
-  background-image: url('../images/Help_Button.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
+  font-family: sans-serif;
+  color: white;
+  background: rgb(48,77,14);
+  background: radial-gradient(circle, rgba(48,77,14,1) 0%, rgba(76,131,14,1) 100%);
   box-shadow: 0 3px 5px black;
+  font-size: 30px;
 }
 #exitButton {
   align-self: flex-end;
@@ -131,11 +131,12 @@ td {
   width: 45px;
   border-radius: 50%;
   border: 1px transparent;
-  background-image: url('../images/Exit_Button.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
+  font-family: sans-serif;
+  color: white;
+  background: rgb(117,0,0);
+  background: radial-gradient(circle, rgba(117,0,0,1) 0%, rgba(252,70,70,1) 100%);
   box-shadow: 0 3px 5px black;
+  font-size: 30px;
 }
 .button:active {
   transform: translateY(4px);
