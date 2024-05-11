@@ -1,4 +1,4 @@
-const wordsToChooseFrom = ['HELSINKI', 'TAMPERE', 'JYVÄSKYLÄ', 'OULU', 'KEURUU', 'LAHTI', 'JÄMSÄ', 'ROVANIEMI', 'SEINÄJOKI', 'ÄÄNEKOSKI', 'PORI', 'VANTAA', 'VARKAUS', 'MIKKELI', 'KUOPIO', 'JOENSUU', 'TURKU', 'VAAJAKOSKI', 'MUURAME'];
+const wordsToChooseFrom = ['HELSINKI', 'TAMPERE', 'JYVÄSKYLÄ', 'OULU', 'KEURUU', 'LAHTI', 'JÄMSÄ', 'ROVANIEMI', 'SEINÄJOKI', 'ÄÄNEKOSKI', 'PORI', 'VANTAA', 'VARKAUS', 'MIKKELI', 'KUOPIO', 'JOENSUU', 'TURKU', 'VAAJAKOSKI', 'MUURAME', 'KORPILAHTI'];
 let wordsToUse = [];
 for(let i = 0; i < wordsToChooseFrom.length; i++) {
     wordsToUse.push(wordsToChooseFrom[i]);

@@ -111,12 +111,15 @@ td {
   position: absolute;
   top: 10px;
   right: 60px;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 1px transparent;
   font-family: arial black, sans-serif;
-  background-color: green;
+  background-image: url('../images/Help_Button.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
   box-shadow: 0 3px 5px black;
 }
 #exitButton {
@@ -124,13 +127,18 @@ td {
   position: absolute;
   top: 10px;
   right: 10px;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
-  border: 2px solid black;
-  font-family: arial black, sans-serif;
-  background-color: red;
+  border: 1px transparent;
+  background-image: url('../images/Exit_Button.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
   box-shadow: 0 3px 5px black;
+}
+.button:active {
+  transform: translateY(4px);
 }
 #wordList {
   display: none;
