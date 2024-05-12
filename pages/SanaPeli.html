@@ -8,15 +8,19 @@
 </head>
 <body>
     <div id="gameScreen">
-        <div id="gameUI">
+        <div id="top-container">
             <p id="wordCount"></p>
             <button id="helpButton" class="button" onclick="toggleWordList()">?</button>
             <button id="exitButton" class="button">X</button>
         </div>
-        <table id="grid"></table>
-        <div id="wordList">
-            <h2>Löydettävät Sanat</h2>
-            <ul id="wordListItems"></ul>
+        <div id="game-container">
+            <div id="grid-container">
+                <table id="grid"></table>
+            </div>
+            <div id="wordList">
+                <h2>Löydettävät Sanat</h2>
+                <ul id="wordListItems"></ul>
+            </div>
         </div>
     </div>
     <div id="nextDifficultyScreen" style="display: none;">

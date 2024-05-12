@@ -35,13 +35,21 @@ td {
   background-repeat: no-repeat;
   background-size: cover;
 }
-#grid {
-  position: relative;
-}
-#gameUI {
+#top-container {
   width: inherit;
-  position: absolute;
-  top: 0px;
+  height: 70px;
+}
+#game-container {
+  flex-grow: 1;
+  display: flex;
+  width: inherit;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#grid-container {
+  max-height: calc(100% - 100px);
+  overflow: auto;
 }
 #wordCount {
   align-self: center;
@@ -144,6 +152,7 @@ td {
 #wordList {
   display: none;
   margin-top: 10px;
+  max-height: 100px;
   overflow-y: auto;
   background-color: white;
   padding: 20px;
