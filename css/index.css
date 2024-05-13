@@ -18,7 +18,7 @@
     background-image: url('../images/city3.jpg');
     background-size: cover;
     background-position: center;
-    filter: blur(2px);
+    filter: blur(1px);
     z-index: -1; 
   }
   .start-button {
@@ -32,12 +32,7 @@
     margin-top: 20px;
     text-decoration: none;
   }
-  .instructions {
-    display: none; 
-    margin-top: 20px;
-    font-size: 16px;
-    color: white;
-  }
+
 
   table {
     border-collapse: collapse;
