@@ -1,36 +1,43 @@
-.instructions {
-    display: none; 
-    margin-top: 20px;
-    font-size: 16px;
-    color: white;
-  }
-  .start-screen {
-    position: relative;
-    width: 650px;
-    height: 700px;
-    margin: 50px auto;
-    text-align: center;
-    border: 2px solid black;
-    padding: 20px;
-    color: white;
-    background-image: url('../images/Helsinki.png');
-    background-size: cover;
-    background-position: center;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
 
-  .start-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color:green; 
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 12px;
-    margin-top: 20px;
-    text-decoration: none;
-  }
-  mark {
-    background-color: blue;
-    color: white;
-  }
-  
+
+
+.start-screen {
+  position: relative;
+  width: 650px;
+  height: 700px;
+  margin: 50px auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 20px;
+  color: white;
+  background-image: url('../images/Helsinki.png');
+  background-size: cover;
+  background-position: center;
+  font-family: 'schoolbell',cursive;
+}
+
+.start-button {
+  padding: 15px 30px;
+  font-family: 'schoolbell',cursive;
+  font-size: 20px;
+  background-color: green;
+  border: 2px solid #000;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-top: 30px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.1);
+}
+
+mark {
+  background-color: blue;
+  color: white;
+  font-family: 'schoolbell',cursive;
+}
