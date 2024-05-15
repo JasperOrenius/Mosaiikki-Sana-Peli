@@ -34,6 +34,7 @@ td {
   background-image: url('../images/Forest.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 12px;
 }
 #top-container {
   width: inherit;
@@ -48,6 +49,7 @@ td {
   flex-direction: column;
 }
 #grid-container {
+  display: none;
   max-height: calc(100% - 100px);
   overflow: auto;
 }
@@ -150,9 +152,9 @@ td {
   transform: translateY(4px);
 }
 #wordList {
-  display: none;
   margin-top: 10px;
-  max-height: 100px;
+  max-height: 400px;
+  max-width: 200px;
   overflow-y: auto;
   background-color: white;
   padding: 20px;
@@ -169,4 +171,163 @@ td {
 }
 #wordListItems li {
   margin-bottom: 5px;
+}
+#animation-test {
+  z-index: 1;
+  position: absolute;
+  width: 650px;
+  height: 700px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+#animation-test img {
+  overflow-y: auto;
+  position: relative;
+  opacity: 0;
+}
+@keyframes fadeIn1 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(35px, 45px);
+  }
+}
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(20px, 30px);
+  }
+}
+@keyframes fadeIn3 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(15px, 15px);
+  }
+}
+@keyframes fadeIn4 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(10px, 0px);
+  }
+}
+@keyframes fadeIn5 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(5px, -5px);
+  }
+}
+@keyframes fadeIn6 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(40px, -5px);
+  }
+}
+@keyframes fadeIn7 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(30px, 0px);
+  }
+}
+@keyframes fadeIn8 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(25px, 10px);
+  }
+}
+@keyframes fadeIn9 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(20px, 20px);
+  }
+}
+@keyframes fadeIn10 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(15px, 30px);
+  }
+}
+@keyframes fadeIn11 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-10px, 45px);
+  }
+}
+.animate1 {
+  animation: fadeIn1 1s ease 0.5s forwards;
+}
+.animate2 {
+  animation: fadeIn2 1s ease 1s forwards;
+}
+.animate3 {
+  animation: fadeIn3 1s ease 1.5s forwards;
+}
+.animate4 {
+  animation: fadeIn4 1s ease 2s forwards;
+}
+.animate5 {
+  animation: fadeIn5 1s ease 2.5s forwards;
+}
+.animate6 {
+  animation: fadeIn6 1s ease 3s forwards;
+}
+.animate7 {
+  animation: fadeIn7 1s ease 3.5s forwards;
+}
+.animate8 {
+  animation: fadeIn8 1s ease 4s forwards;
+}
+.animate9 {
+  animation: fadeIn9 1s ease 4.5s forwards;
+}
+.animate10 {
+  animation: fadeIn10 1s ease 5s forwards;
+}
+.animate11 {
+  animation: fadeIn11 1s ease 5.5s forwards;
 }

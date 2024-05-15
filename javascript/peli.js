@@ -5,7 +5,7 @@ for(let i = 0; i < wordsToChooseFrom.length; i++) {
 }
 let remainingWords;
 let currentDifficulty = 'easy';
-let isWordListVisible = false;
+let isHelpScreenVisible = true;
 let wordItemList = [];
 
 const difficulties = {
@@ -24,7 +24,6 @@ const difficulties = {
         columns: 10,
         wordAmount: 6
     },
-
 };
     
 const { rows, columns, wordAmount } = difficulties[currentDifficulty];
@@ -35,10 +34,17 @@ remainingWords = placedWordsCount;
 displayGrid(emptyGrid, rows, columns);
 document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
 
-function toggleWordList() {
-    const wordList = document.getElementById('wordList');
-    isWordListVisible = !isWordListVisible;
-    wordList.style.display = isWordListVisible ? 'block' : 'none';
+addToWordList(wordItemList);
+
+const container = document.getElementById('animation-test');
+const images = container.getElementsByTagName('img');
+
+function toggleHelpScreen() {
+    const helpScreen = document.getElementById('helpScreen');
+    const gridContainer = document.getElementById('grid-container')
+    isHelpScreenVisible = !isHelpScreenVisible;
+    helpScreen.style.display = isHelpScreenVisible ? 'block' : 'none';
+    gridContainer.style.display = !isHelpScreenVisible ? 'block' : 'none';
     addToWordList(wordItemList);
 }
 
@@ -257,9 +263,10 @@ function checkWord(startCell, endCell) {
             window.location.replace('end.html');
             return;
         }
-        if(isWordListVisible) {
+        if(isHelpScreenVisible) {
             toggleWordList();
         }
+        triggerAnimation();
         showNextDifficultyScreen();
     }
 }
@@ -275,10 +282,29 @@ function highlightFoundWords(startRow, startCol, endRow, endCol) {
 }
 
 function showNextDifficultyScreen() {
+    for (let i = 0; i < images.length; i++) {
+        images[i].classList.add('fadeInAnimation');
+    }
     document.getElementById('gameScreen').style.display = 'none';
     document.getElementById('nextDifficultyScreen').style.display = 'block';
         
 }
+
+function triggerAnimation() {
+    const images = document.querySelectorAll('#animation-test img');
+    images.forEach((img, index) => {
+        img.classList.add(`animate${index + 1}`);
+    });
+}
+
+function resetAnimation() {
+    const images = document.querySelectorAll('#animation-test img');
+    images.forEach((img, index) => {
+        img.classList.remove(`animate${index + 1}`);
+        void img.offsetWidth;
+    });
+}
+
 
 function resetSelection() {
     startCell = null;
@@ -320,6 +346,7 @@ function moveToNextDifficulty() {
 }
 
 function resetGame() {
+    resetAnimation();
     document.getElementById('gameScreen').style.display = 'flex';
     document.getElementById('nextDifficultyScreen').style.display = 'none';
     moveToNextDifficulty();
@@ -337,6 +364,7 @@ function resetGame() {
     generateWords(emptyGrid, words);
     displayGrid(emptyGrid, rows, columns);
     document.getElementById('wordCount').textContent = `Sanoja löydetty: ${wordAmount - remainingWords}/${wordAmount}`;
+    toggleHelpScreen();
 }
 
 function getRandomWords(wordAmount, maxCharacterAmount) {
