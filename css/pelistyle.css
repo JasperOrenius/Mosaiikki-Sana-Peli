@@ -76,15 +76,21 @@ td {
   color: black;
 }
 #nextDifficultyScreen input[type="submit"] {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: green; 
-  border: none;
-  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #8BC34A;
+  border: 2px solid #4CAF50;
+  color: #fff;
   cursor: pointer;
-  border-radius: 12px;
-  margin-top: 400px;
+  border-radius: 25px;
+  margin-top: 350px;
   text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-family: 'schoolbell',cursive;
+}
+#nextDifficultyScreen input[type="submit"]:hover {
+  transform: scale(1.1);
 }
 #nextDifficultyScreen::before {
   content: '';
@@ -111,6 +117,7 @@ td {
   border-radius: 35px;
   text-decoration: none;
   font-size: 25px;
+  font-family: 'Schoolbell', cursive;
 }
 .credits {
   position: absolute;
