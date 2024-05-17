@@ -39,6 +39,9 @@ td {
   background-size: cover;
   border-radius: 12px;
 }
+#helpScreen {
+  text-align: center;
+}
 #top-container {
   width: inherit;
   height: 70px;
@@ -158,6 +161,16 @@ td {
   box-shadow: 0 3px 5px black;
   font-size: 30px;
 }
+#continueButton {
+  border: 2px solid black;
+  border-radius: 12px;
+  width: 150px;
+  height: 50px;
+  font-size: 30px;
+  margin-top: 20px;
+  background: rgb(255,249,162);
+  background: radial-gradient(circle, rgba(255,249,162,1) 0%, rgba(255,179,0,1) 100%);
+}
 .button:active {
   transform: translateY(4px);
 }
@@ -182,6 +195,86 @@ td {
 #wordListItems li {
   margin-bottom: 5px;
 }
+#helsinki {
+  bottom: 15px;
+  right: 360px;
+}
+#jamsa {
+  bottom: 120px;
+  left: 195px;
+}
+#joensuu {
+  bottom: 160px;
+  right: 200px;
+}
+#jyvaskyla {
+  bottom: 150px;
+  left: 235px;
+}
+#keuruu {
+  bottom: 150px;
+  left: 190px;
+}
+#korpilahti {
+  bottom: 130px;
+  left: 220px;
+}
+#kuopio {
+  bottom: 170px;
+  right: 260px;
+}
+#lahti {
+  bottom: 65px;
+  right: 320px;
+}
+#mikkeli {
+  bottom: 110px;
+  right: 270px;
+}
+#muurame {
+  bottom: 142px;
+  left: 232px;
+}
+#oulu {
+  bottom: 300px;
+  left: 210px;
+}
+#pori {
+  bottom: 90px;
+  left: 100px;
+}
+#rovaniemi {
+  bottom: 400px;
+  left: 210px;
+}
+#seinajoki {
+  bottom: 165px;
+  left: 115px;
+}
+#tampere {
+  bottom: 95px;
+  left: 155px;
+}
+#turku {
+  bottom: 40px;
+  left: 110px;
+}
+#vaajakoski {
+  bottom: 150px;
+  left: 245px;
+}
+#vantaa {
+  bottom: 40px;
+  right: 345px;
+}
+#varkaus {
+  bottom: 140px;
+  right: 240px;
+}
+#aanekoski {
+  bottom: 180px;
+  left: 235px;
+}
 #animation-test {
   z-index: 1;
   position: absolute;
@@ -192,6 +285,12 @@ td {
   align-items: center;
   justify-content: center;
   pointer-events: none;
+}
+.city {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: none;
 }
 #animation-test img {
   overflow-y: auto;

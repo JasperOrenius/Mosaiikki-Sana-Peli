@@ -25,7 +25,30 @@ const difficulties = {
         wordAmount: 6
     },
 };
-    
+
+const cityImages = {
+    'HELSINKI': 'helsinki',
+    'TAMPERE': 'tampere',
+    'JYVÄSKYLÄ': 'jyvaskyla',
+    'OULU': 'oulu',
+    'KEURUU': 'keuruu',
+    'LAHTI': 'lahti',
+    'JÄMSÄ': 'jamsa',
+    'ROVANIEMI': 'rovaniemi',
+    'SEINÄJOKI': 'seinajoki',
+    'ÄÄNEKOSKI': 'aanekoski',
+    'PORI': 'pori',
+    'VANTAA': 'vantaa',
+    'VARKAUS': 'varkaus',
+    'MIKKELI': 'mikkeli',
+    'KUOPIO': 'kuopio',
+    'JOENSUU': 'joensuu',
+    'TURKU': 'turku',
+    'VAAJAKOSKI': 'vaajakoski',
+    'MUURAME': 'muurame',
+    'KORPILAHTI': 'korpilahti'
+};
+
 const { rows, columns, wordAmount } = difficulties[currentDifficulty];
 const emptyGrid = generateEmptyGrid(rows, columns);
 const words_ = getRandomWords(wordAmount, Math.min(rows, columns));
@@ -49,12 +72,19 @@ function toggleHelpScreen() {
 }
 
 function addToWordList(wordList) {
-    const wordListItems = document.getElementById('wordListItems');
-    wordListItems.innerHTML = '';
-    for(let i = 0; i < wordList.length; i++) {
-        const li = document.createElement('li');
-        li.textContent = wordList[i];
-        wordListItems.appendChild(li);
+    const allCityImages = document.getElementsByClassName('city');
+    for (let i = 0; i < allCityImages.length; i++) {
+        allCityImages[i].style.display = 'none';
+    }
+
+    for (const word of wordList) {
+        const cityId = cityImages[word.toUpperCase()];
+        if (cityId) {
+            const cityImage = document.getElementById(cityId);
+            if (cityImage) {
+                cityImage.style.display = 'inline';
+            }
+        }
     }
 }
 
