@@ -49,6 +49,18 @@ const cityImages = {
     'KORPILAHTI': 'korpilahti'
 };
 
+const conflictingCities = {
+    'JYVÄSKYLÄ': ['MUURAME', 'KORPILAHTI', 'KEURUU', 'VAAJAKOSKI'],
+    'MUURAME': ['JYVÄSKYLÄ', 'KORPILAHTI', 'KEURUU', 'VAAJAKOSKI'],
+    'KORPILAHTI': ['MUURAME', 'KEURUU', 'JYVÄSKYLÄ', 'JÄMSÄ', 'VAAJAKOSKI'],
+    'KEURUU': ['KORPILAHTI', 'MUURAME', 'JYVÄSKYLÄ', 'VAAJAKOSKI'],
+    'JÄMSÄ': ['KORPILAHTI'],
+    'ÄÄNEKOSKI': ['KUOPIO'],
+    'VAAJAKOSKI': ['MUURAME', 'JYVÄSKYLÄ', 'KUOPIO', 'KEURUU', 'VARKAUS', 'KORPILAHTI'],
+    'KUOPIO': ['ÄÄNEKOSKI', 'VAAJAKOSKI'],
+    'VARKAUS': ['VAAJAKOSKI']
+};
+
 const { rows, columns, wordAmount } = difficulties[currentDifficulty];
 const emptyGrid = generateEmptyGrid(rows, columns);
 const words_ = getRandomWords(wordAmount, Math.min(rows, columns));
@@ -315,9 +327,12 @@ function showNextDifficultyScreen() {
     for (let i = 0; i < images.length; i++) {
         images[i].classList.add('fadeInAnimation');
     }
-    document.getElementById('gameScreen').style.display = 'none';
-    document.getElementById('nextDifficultyScreen').style.display = 'block';
-        
+    const nextDifficultyScreen = document.getElementById('nextDifficultyScreen');
+    nextDifficultyScreen.style.display = 'block';
+    nextDifficultyScreen.style.pointerEvents = 'all';
+    setTimeout(() => {
+        nextDifficultyScreen.classList.add('show');
+    }, 2400); 
 }
 
 function triggerAnimation() {
@@ -334,7 +349,6 @@ function resetAnimation() {
         void img.offsetWidth;
     });
 }
-
 
 function resetSelection() {
     startCell = null;
@@ -378,12 +392,14 @@ function moveToNextDifficulty() {
 function resetGame() {
     resetAnimation();
     document.getElementById('gameScreen').style.display = 'flex';
-    document.getElementById('nextDifficultyScreen').style.display = 'none';
+    const nextDifficultyScreen = document.getElementById('nextDifficultyScreen');
+    nextDifficultyScreen.classList.remove('show');
+    nextDifficultyScreen.style.display = 'none';
     moveToNextDifficulty();
-    const { rows, columns, wordAmount} = difficulties[currentDifficulty];
+    const { rows, columns, wordAmount } = difficulties[currentDifficulty];
     wordsToUse = [];
     wordItemList = [];
-    for(let i = 0; i < wordsToChooseFrom.length; i++) {
+    for (let i = 0; i < wordsToChooseFrom.length; i++) {
         wordsToUse.push(wordsToChooseFrom[i]);
     }
     const grid = document.getElementById('grid');
@@ -400,5 +416,29 @@ function resetGame() {
 function getRandomWords(wordAmount, maxCharacterAmount) {
     const filteredWords = filterWordsByMaxCharacterAmount(wordsToUse, maxCharacterAmount);
     const wordsToChooseFromShuffled = shuffleArray(filteredWords);
-    return wordsToChooseFromShuffled.slice(0, wordAmount);
+    const selectedWords = [];
+    const usedWords = new Set();
+
+    for (let word of wordsToChooseFromShuffled) {
+        if (selectedWords.length >= wordAmount) break;
+        if (!usedWords.has(word) && canSelectWord(word, usedWords)) {
+            selectedWords.push(word);
+            usedWords.add(word);
+            if (conflictingCities[word]) {
+                conflictingCities[word].forEach(conflict => usedWords.add(conflict));
+            }
+        }
+    }
+    return selectedWords;
+}
+
+function canSelectWord(word, usedWords) {
+    if (conflictingCities[word]) {
+        for (let conflict of conflictingCities[word]) {
+            if (usedWords.has(conflict)) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
