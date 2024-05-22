@@ -20,6 +20,7 @@
         <img src="../images/Y_2.png" style="width: 50px; height: 50px;">
         <img src="../images/!_1.png" style="width: 50px; height: 50px;">
     </div>
+    <div id="output"></div>
     <div id="gameScreen">
         <div id="top-container">
             <p id="wordCount"></p>
@@ -28,18 +29,35 @@
         </div>
         <div id="game-container">
             <div id="helpScreen">
-                <p>Maalaa sanat</p>
-                <div id="wordList">
-                    <h2>Löydettävät Sanat</h2>
-                    <ul id="wordListItems"></ul>
-                </div>
+                <img src="../images/Regions_of_Finland_blank_map.png" alt="Suomen Kartta" width="350px" height="600px">
+                <img src="../images/Helsinki.png" alt="" id="helsinki" class="city">
+                <img src="../images/Jämsä.png" alt="" id="jamsa" class="city">
+                <img src="../images/Joensuu.png" alt="" id="joensuu" class="city">
+                <img src="../images/Jyväskylä.png" alt="" id="jyvaskyla" class="city">
+                <img src="../images/Keuruu.png" alt="" id="keuruu" class="city">
+                <img src="../images/Korpilahti.png" alt="" id="korpilahti" class="city">
+                <img src="../images/Kuopio.png" alt="" id="kuopio" class="city">
+                <img src="../images/Lahti.png" alt="" id="lahti" class="city">
+                <img src="../images/Mikkeli.png" alt="" id="mikkeli" class="city">
+                <img src="../images/Muurame.png" alt="" id="muurame" class="city">
+                <img src="../images/Oulu.png" alt="" id="oulu" class="city">
+                <img src="../images/Pori.png" alt="" id="pori" class="city">
+                <img src="../images/Rovaniemi.png" alt="" id="rovaniemi" class="city">
+                <img src="../images/Seinäjoki.png" alt="" id="seinajoki" class="city">
+                <img src="../images/Tampere.png" alt="" id="tampere" class="city">
+                <img src="../images/Turku.png" alt="" id="turku" class="city">
+                <img src="../images/Vaajakoski.png" alt="" id="vaajakoski" class="city">
+                <img src="../images/Vantaa.png" alt="" id="vantaa" class="city">
+                <img src="../images/Varkaus.png" alt="" id="varkaus" class="city">
+                <img src="../images/Äänekoski.png" alt="" id="aanekoski" class="city">
+                <button id="continueButton" class="button" onclick="toggleHelpScreen()">Jatka</button>
             </div>
             <div id="grid-container">
                 <table id="grid"></table>
             </div>
         </div>
     </div>
-    <div id="nextDifficultyScreen" style="display: none;">
+    <div id="nextDifficultyScreen">
         <input type="submit" onclick="resetGame()" value="Seuraava Taso">
         <div class="credits">Credits: Tiia Monto<br></div>
     </div>
