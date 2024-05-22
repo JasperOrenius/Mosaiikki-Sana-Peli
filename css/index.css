@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
-
 .start-screen {
   position: relative;
   width: 650px;
@@ -9,45 +7,79 @@
   border: 2px solid rgba(0, 0, 0, 0.5);
   padding: 20px;
   color: white;
-  font-family: 'Schoolbell', cursive;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.start-screen::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../images/city3.jpg');
+  background-image: url('../images/background.png');
   background-size: cover;
   background-position: center;
-  filter: blur(0.5px);
-  z-index: -1;
+  font-size: 50px;
 }
 
 .start-screen img {
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  width: 100px; 
-  height: auto; 
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block; 
+  margin: -80px auto 0;  
+  margin-top: 120px;
 }
-
+.start-screen .GameName{
+  height: auto;
+  position: absolute;
+  top: -1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
 .start-button {
-  padding: 15px 30px;
-  font-size: 20px;
-  background-color: #8BC34A;
-  border: 2px solid #4CAF50;
-  color: #fff;
+  position: relative; 
+  padding: 60px 135px;
   cursor: pointer;
-  border-radius: 25px;
-  margin-top: 30px;
-  text-decoration: none;
   display: inline-block;
   transition: transform 0.2s ease;
 }
+.start-buttons .button-row {
+  display: flex;
+  justify-content: center; 
+}
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px; 
+  height: 300px; 
+}
+.button1 {
+  background-image: url('../images/first\ stage\ button.png');
+}
+
+.button1::before {
+  background-image: url('../images/first\ stage\ text.png'); 
+}
+
+.button2 {
+  background-image: url('../images/second\ stage\ button.png');
+}
+
+.button2::before {
+  background-image: url('../images/second\ stage\ text.png'); 
+}
+
+.button3 {
+  background-image: url('../images/start\ game\ button.png'); 
+  padding: 60px 200px;
+}
+
+.button3::before {
+  background-image: url('../images/start\ game\ text.png'); 
+  top: 150%;
+  width: 350px; 
+  height: 350px; 
+}
+
 
 .start-button:hover {
   transform: scale(1.1);
@@ -56,26 +88,4 @@
 table {
   border-collapse: collapse;
   margin-top: 30px;
-}
-
-td {
-  width: 30px;
-  height: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  text-align: center;
-  font-family: 'Schoolbell', cursive;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.highlight {
-  background-color: #9E9E9E;
-}
-
-.credits {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 12px;
-  color: white;
 }

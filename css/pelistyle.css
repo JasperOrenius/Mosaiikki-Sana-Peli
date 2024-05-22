@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
-
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
-  font-family: 'schoolbell',cursive;
 }
 table {
   border-collapse: collapse;
@@ -17,7 +14,6 @@ td {
   border: 4px solid #baada0;
   background-color: #ccc0b4;
   text-align: center;
-  font-family: 'schoolbell',cursive;
   font-size: 20px;
   cursor: pointer;
   user-select: none;
@@ -60,7 +56,6 @@ td {
   align-self: center;
   position: absolute;
   top: 0px;
-  font-family: 'schoolbell',cursive;
   font-size: 24px;
   left: 50%;
   transform: translateX(-50%);
@@ -87,7 +82,6 @@ td {
   text-decoration: none;
   display: inline-block;
   transition: transform 0.2s ease;
-  font-family: 'schoolbell',cursive;
 }
 #nextDifficultyScreen input[type="submit"]:hover {
   transform: scale(1.1);
@@ -117,7 +111,6 @@ td {
   border-radius: 35px;
   text-decoration: none;
   font-size: 25px;
-  font-family: 'Schoolbell', cursive;
 }
 .credits {
   position: absolute;
@@ -135,7 +128,6 @@ td {
   width: 45px;
   border-radius: 50%;
   border: 1px transparent;
-  font-family: 'schoolbell',cursive;
   color: white;
   background: rgb(48,77,14);
   background: radial-gradient(circle, rgba(48,77,14,1) 0%, rgba(76,131,14,1) 100%);
@@ -151,7 +143,6 @@ td {
   width: 45px;
   border-radius: 50%;
   border: 1px transparent;
-  font-family: 'schoolbell',cursive;
   color: white;
   background: rgb(117,0,0);
   background: radial-gradient(circle, rgba(117,0,0,1) 0%, rgba(252,70,70,1) 100%);
