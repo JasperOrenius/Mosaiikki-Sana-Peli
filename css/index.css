@@ -16,19 +16,11 @@
 
 .start-screen img {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   height: auto;
   display: block; 
-  margin: -80px auto 0;  
-  margin-top: 120px;
-}
-.start-screen .GameName{
-  height: auto;
-  position: absolute;
-  top: -1%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
+  margin: -20px auto 0;  
+  margin-top: 65px;
 }
 .start-button {
   position: relative; 
@@ -40,6 +32,8 @@
 .start-buttons .button-row {
   display: flex;
   justify-content: center; 
+  margin-top: 70px;
+  gap: 100px;
 }
 .start-button::before {
   content: '';
@@ -67,25 +61,6 @@
 .button2::before {
   background-image: url('../images/second\ stage\ text.png'); 
 }
-
-.button3 {
-  background-image: url('../images/start\ game\ button.png'); 
-  padding: 60px 200px;
-}
-
-.button3::before {
-  background-image: url('../images/start\ game\ text.png'); 
-  top: 150%;
-  width: 350px; 
-  height: 350px; 
-}
-
-
 .start-button:hover {
   transform: scale(1.1);
-}
-
-table {
-  border-collapse: collapse;
-  margin-top: 30px;
 }
