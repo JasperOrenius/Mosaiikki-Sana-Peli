@@ -7,23 +7,73 @@
   border: 2px solid black;
   padding: 20px;
   color: white;
-  background-image: url('../images/city5.png');
+  background-image: url('../images/background2.png');
   background-size: cover;
   background-position: center;
 }
 
-.start-button {
-  padding: 15px 30px;
-  font-size: 20px;
-  background-color: green;
-  border: 2px solid #000;
-  color: #fff;
+.start-screen img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block; 
+  margin: -20px auto 0;  
+  margin-top: 10px;
+}
+
+.back-button, .exit-button {
+  position: absolute;
+  width: 60px;
+  height: 60px; 
+  background-size: contain;
+  background-repeat: no-repeat;
   cursor: pointer;
-  border-radius: 25px;
-  margin-top: 30px;
-  text-decoration: none;
+}
+
+.back-button:hover, .exit-button:hover {
+  transform: scale(1.1); 
+}
+
+.back-button {
+  top: 10px;
+  left: 5px;
+  background-image: url('../images/back.png');
+}
+
+.exit-button {
+  top: 10px;
+  right: 5px;
+  background-image: url('../images/exit.png');
+}
+
+.start-button {
+  position: relative; 
+  padding: 60px 135px;
+  cursor: pointer;
   display: inline-block;
   transition: transform 0.2s ease;
+  margin-top: 440px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px; 
+  height: 300px; 
+}
+.button1 {
+  background-image: url('../images/next.png');
+}
+
+.button1::before {
+  background-image: url('../images/next\ text.png'); 
 }
 
 
