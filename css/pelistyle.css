@@ -11,9 +11,9 @@ table {
 td {
   width: 40px;
   height: 40px;
-  border: 4px solid #baada0;
-  background-color: #ccc0b4;
+  border: 4px solid #2e285c;
   text-align: center;
+  color: #2e285c;
   font-size: 20px;
   cursor: pointer;
   user-select: none;
@@ -30,11 +30,12 @@ td {
   justify-content: center;
   position: absolute;
   top: 10px;
-  background-image: url('../images/Forest.jpeg');
+  background-image: url('../images/background3.png');
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 12px;
 }
+
 #helpScreen {
   text-align: center;
 }
@@ -54,14 +55,20 @@ td {
   display: none;
   max-height: calc(100% - 100px);
   overflow: auto;
+  background-image: url('../images/puzzle\ background\ color.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 #wordCount {
   align-self: center;
   position: absolute;
-  top: 0px;
+  top: 2px;
   font-size: 24px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
+  color: #fff;
 }
 #nextDifficultyScreen {
   opacity: 0;
@@ -70,8 +77,6 @@ td {
   height: 700px;
   top: 10px;
   text-align: center;
-  border: 2px solid black;
-  color: black;
   pointer-events: none;
   z-index: 1;
   transition: opacity 1s ease;
@@ -82,8 +87,7 @@ td {
 #nextDifficultyScreen input[type="submit"] {
   padding: 15px 30px;
   font-size: 20px;
-  background-color: #8BC34A;
-  border: 2px solid #4CAF50;
+  background-image: linear-gradient(rgb(71, 175, 71),rgb(172, 84, 223));
   color: #fff;
   cursor: pointer;
   border-radius: 25px;
@@ -95,39 +99,48 @@ td {
 #nextDifficultyScreen input[type="submit"]:hover {
   transform: scale(1.1);
 }
-#nextDifficultyScreen::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../images/city2.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: blur(2px);
-  z-index: -1; 
+#background4 {
+  position:absolute; 
+  top:-50px; 
+  left:0;
+  width: 650px;
+  height: 700px;
+  margin: 50px auto;
+  text-align: center;
 }
-#nextDifficultyScreen p {
-  color: white;
+#lilypad {
   position: absolute;
-  top: 300px;
-  left: 50%; 
-  transform: translateX(-50%);
-  padding: 5px 10px;
+  top:7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+#kartta {
+  position: relative;
+  width: 350px;
+  height: 600px;
+  z-index: 2;
+}
+#backButton {
+  position: absolute;
+  width: 60px;
+  height: 60px; 
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 10px;
+  left: 5px;
+  background-image: url('../images/back.png');
+  padding: 0;
   border: none;
-  background-color: cornflowerblue; 
-  border-radius: 35px;
-  text-decoration: none;
-  font-size: 25px;
+  background-color:transparent;
+  outline:none; 
 }
-.credits {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 12px;
-  color: white;
+
+#backButton:hover {
+  transform: scale(1.1); 
 }
+
+
 #helpButton {
   align-self: flex-end;
   position: absolute;
@@ -143,6 +156,11 @@ td {
   box-shadow: 0 3px 5px black;
   font-size: 30px;
 }
+
+#helpButton:hover {
+  transform: scale(1.1);
+}
+
 #exitButton {
   align-self: flex-end;
   position: absolute;
@@ -158,7 +176,12 @@ td {
   box-shadow: 0 3px 5px black;
   font-size: 30px;
 }
+#exitButton:hover {
+  transform: scale(1.1);
+}
+
 #continueButton {
+  position: relative;
   border: 2px solid black;
   border-radius: 12px;
   width: 150px;
@@ -167,7 +190,12 @@ td {
   margin-top: 20px;
   background: rgb(255,249,162);
   background: radial-gradient(circle, rgba(255,249,162,1) 0%, rgba(255,179,0,1) 100%);
+  z-index: 2;
 }
+#continueButton:hover {
+  transform: scale(1.1);
+}
+
 .button:active {
   transform: translateY(4px);
 }
@@ -195,82 +223,102 @@ td {
 #helsinki {
   bottom: 15px;
   right: 360px;
+  z-index: 2;
 }
 #jamsa {
   bottom: 120px;
   left: 195px;
+  z-index: 2;
 }
 #joensuu {
   bottom: 160px;
   right: 200px;
+  z-index: 2;
 }
 #jyvaskyla {
   bottom: 150px;
   left: 235px;
+  z-index: 2;
 }
 #keuruu {
   bottom: 150px;
   left: 190px;
+  z-index: 2;
 }
 #korpilahti {
   bottom: 130px;
   left: 220px;
+  z-index: 2;
 }
 #kuopio {
   bottom: 170px;
   right: 260px;
+  z-index: 2;
 }
 #lahti {
   bottom: 65px;
   right: 320px;
+  z-index: 2;
 }
 #mikkeli {
   bottom: 110px;
   right: 270px;
+  z-index: 2;
 }
 #muurame {
   bottom: 142px;
   left: 232px;
+  z-index: 2;
 }
 #oulu {
   bottom: 300px;
   left: 210px;
+  z-index: 2;
 }
 #pori {
   bottom: 90px;
   left: 100px;
+  z-index: 2;
 }
 #rovaniemi {
   bottom: 400px;
   left: 210px;
+  z-index: 2;
 }
 #seinajoki {
   bottom: 165px;
   left: 115px;
+  z-index: 2;
 }
 #tampere {
   bottom: 95px;
   left: 155px;
+  z-index: 2;
 }
 #turku {
   bottom: 40px;
   left: 110px;
+  z-index: 2;
 }
 #vaajakoski {
   bottom: 150px;
   left: 245px;
+  z-index: 2;
 }
 #vantaa {
   bottom: 40px;
   right: 345px;
+  z-index: 2;
 }
 #varkaus {
   bottom: 140px;
   right: 240px;
+  z-index: 2;
 }
 #aanekoski {
   bottom: 180px;
   left: 235px;
+  z-index: 2;
 }
 #animation-test {
   z-index: 2;

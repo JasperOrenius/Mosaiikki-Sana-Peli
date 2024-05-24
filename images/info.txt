@@ -1,0 +1,2 @@
+correct selection color: #ff91ae / light pink
+all cities to be found: Jyväskylä, Helsinki, Oulu and Lahti
