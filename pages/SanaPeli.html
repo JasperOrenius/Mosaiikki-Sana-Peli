@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mosaiikki Best Seller</title>
+  <title>Sanapeli</title>
   <link rel="stylesheet" href="../css/pelistyle.css"> 
+  <link rel="stylesheet" href="../css/taso2.css"> 
 </head>
 <body>
     <div id="animation-test">
@@ -24,12 +25,15 @@
     <div id="gameScreen">
         <div id="top-container">
             <p id="wordCount"></p>
+            <button id="backButton" class="button"></button>
             <button id="helpButton" class="button" onclick="toggleHelpScreen()">?</button>
             <a href="../index.html"><button id="exitButton" class="button">X</button></a>
         </div>
         <div id="game-container">
             <div id="helpScreen">
-                <img src="../images/map.png" alt="Suomen Kartta" width="350px" height="600px">
+                
+                <img src="../images/Regions_of_Finland_blank_map.png" alt="Suomen Kartta" id="kartta"  width="350px" height="600px">
+                <img src="../images/background4.png" alt="bg4" id="background4">
                 <img src="../images/Helsinki.png" alt="" id="helsinki" class="city">
                 <img src="../images/Jämsä.png" alt="" id="jamsa" class="city">
                 <img src="../images/Joensuu.png" alt="" id="joensuu" class="city">
@@ -52,6 +56,8 @@
                 <img src="../images/Äänekoski.png" alt="" id="aanekoski" class="city">
                 <button id="continueButton" class="button" onclick="toggleHelpScreen()">Jatka</button>
             </div>
+            <img src="../images/lilypad.png" alt="lilypad" id="lilypad">
+            <button id="nextButton" class="bottom-button" onclick=""></button>
             <div id="grid-container">
                 <table id="grid"></table>
             </div>

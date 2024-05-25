@@ -11,9 +11,9 @@ table {
 td {
   width: 40px;
   height: 40px;
-  border: 4px solid #2e285c;
+  border: 4px solid rgb(16, 51, 107);
   text-align: center;
-  color: #2e285c;
+  color: rgb(11, 45, 99);
   font-size: 20px;
   cursor: pointer;
   user-select: none;
@@ -30,10 +30,29 @@ td {
   justify-content: center;
   position: absolute;
   top: 10px;
-  background-image: url('../images/background3.png');
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 12px;
+}
+
+.round1-bg {
+  background-image: url('../images/background3.png'); 
+}
+
+.round2-bg {
+  background-image: url('../images/2.png'); 
+}
+
+.round3-bg {
+  background-image: url('../images/3.png'); 
+}
+
+.round4-bg {
+  background-image: url('../images/4.png'); 
+}
+
+.round5-bg {
+  background-image: url('../images/5.png'); 
 }
 
 #helpScreen {
@@ -107,6 +126,7 @@ td {
   height: 700px;
   margin: 50px auto;
   text-align: center;
+  z-index: 1;
 }
 #lilypad {
   position: absolute;
@@ -133,7 +153,8 @@ td {
   padding: 0;
   border: none;
   background-color:transparent;
-  outline:none; 
+  outline:none;
+  z-index: 3; 
 }
 
 #backButton:hover {
@@ -155,6 +176,7 @@ td {
   background: radial-gradient(circle, rgba(48,77,14,1) 0%, rgba(76,131,14,1) 100%);
   box-shadow: 0 3px 5px black;
   font-size: 30px;
+  z-index: 3;
 }
 
 #helpButton:hover {
@@ -175,6 +197,7 @@ td {
   background: radial-gradient(circle, rgba(117,0,0,1) 0%, rgba(252,70,70,1) 100%);
   box-shadow: 0 3px 5px black;
   font-size: 30px;
+  z-index: 3;
 }
 #exitButton:hover {
   transform: scale(1.1);
@@ -190,7 +213,7 @@ td {
   margin-top: 20px;
   background: rgb(255,249,162);
   background: radial-gradient(circle, rgba(255,249,162,1) 0%, rgba(255,179,0,1) 100%);
-  z-index: 2;
+  z-index: 3;
 }
 #continueButton:hover {
   transform: scale(1.1);
@@ -199,6 +222,55 @@ td {
 .button:active {
   transform: translateY(4px);
 }
+.bottom-button{
+  padding: 60px 105px;
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color:transparent;
+  outline:none; 
+}
+.bottom-button::before{
+  content: '';
+  background-image: url('../images/check the map.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px; 
+  height: 100px; 
+}
+#mapButton{
+  background-image: url('../images/first\ stage\ button.png');
+  margin-top: 650px;
+  left: 23%;
+
+}
+#mapButton::before {
+  background-image: url('../images/check the map.png'); 
+}
+#nextButton{
+  background-image: url('../images/first\ stage\ button.png');
+  margin-top: 650px;
+  right: -10%;
+}
+#nextButton::before {
+  background-image: url('../images/next text.png');
+  height: 110px; 
+}
+
+.bottom-button:hover {
+    scale: 1.05;
+
+}
+
+
+
 #wordList {
   margin-top: 10px;
   max-height: 400px;

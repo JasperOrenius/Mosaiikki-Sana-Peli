@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mosaiikki Best Seller</title>
+  <title>Sanapeli</title>
   <link rel="stylesheet" href="../css/pelistyle.css"> 
 </head>
 <body>
@@ -21,7 +21,7 @@
         <img src="../images/!_1.png" style="width: 50px; height: 50px;">
     </div>
     <div id="output"></div>
-    <div id="gameScreen">
+    <div id="gameScreen" class="round1-bg" >
         <div id="top-container">
             <p id="wordCount"></p>
             <button id="backButton" class="button"></button>
@@ -56,6 +56,8 @@
                 <button id="continueButton" class="button" onclick="toggleHelpScreen()">Jatka</button>
             </div>
             <img src="../images/lilypad.png" alt="lilypad" id="lilypad">
+            <button id="mapButton" class="bottom-button" onclick="toggleHelpScreen()"></button>
+            <button id="nextButton" class="bottom-button" onclick=""></button>
             <div id="grid-container">
                 <table id="grid"></table>
             </div>
@@ -64,6 +66,8 @@
     <div id="nextDifficultyScreen">
         <input type="submit" onclick="resetGame()" value="Seuraava Taso">
     </div>
-    <script src="../javascript/peli.js"></script>
+    <script src="../javascript/taso1.js"></script>
+    
+    
 </body>
 </html>
