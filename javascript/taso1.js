@@ -329,7 +329,7 @@ function highlightFoundWords(startRow, startCol, endRow, endCol) {
     for(let i = startRow; i <= endRow; i++) {
         for(let j = startCol; j <= endCol; j++) {
             const cell = grid.rows[i].cells[j];
-            cell.style.backgroundColor = 'lightgreen';
+            cell.style.backgroundColor = 'lightpink';
         }
     }
 }

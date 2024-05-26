@@ -19,7 +19,7 @@ td {
   user-select: none;
 }
 .highlighted {
-  background-color: grey;
+  background-color: lightpink;
 }
 #gameScreen {
   width: 650px;
