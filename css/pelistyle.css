@@ -107,7 +107,7 @@ td {
   color: #fff;
   cursor: pointer;
   border-radius: 25px;
-  margin-top: 350px;
+  margin-top: 390px;
   text-decoration: none;
   display: inline-block;
   transition: transform 0.2s ease;
@@ -124,6 +124,13 @@ td {
   margin: 50px auto;
   text-align: center;
   z-index: 1;
+}
+#nextDifficultyScreen img[alt="red_ribon"] {
+  position: absolute;
+  width: 700px;
+  height: 230px;
+  top: 160px;
+  left: -20px;
 }
 #lilypad {
   position: absolute;
@@ -240,7 +247,8 @@ td {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px; 
-  height: 100px; 
+  height: 100px;
+  z-index: 6; 
 }
 #mapButton{
   background-image: url('../images/first\ stage\ button.png');

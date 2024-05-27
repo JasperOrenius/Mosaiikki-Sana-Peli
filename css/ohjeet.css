@@ -52,7 +52,7 @@
   cursor: pointer;
   display: inline-block;
   transition: transform 0.2s ease;
-  margin-top: 440px;
+  margin-top: 100px;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -84,4 +84,10 @@
 mark {
   background-color: blue;
   color: white;
+}
+.start-screen img[src*="Miten_Pelata.gif"] {
+  border: 2px solid #000;
+  border-radius: 10px;
+  width: 300px; 
+  height: auto; 
 }
