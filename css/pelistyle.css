@@ -251,27 +251,64 @@ td {
   z-index: 6; 
 }
 #mapButton{
-  background-image: url('../images/first\ stage\ button.png');
   margin-top: 650px;
   left: 23%;
 
 }
 #mapButton::before {
-  background-image: url('../images/check the map.png'); 
+  background-image: url('../images/check the map.png');
+  margin-top: -10px;
 }
 #nextButton{
-  background-image: url('../images/first\ stage\ button.png');
   margin-top: 650px;
   right: -10%;
 }
 #nextButton::before {
   background-image: url('../images/next text.png');
-  height: 110px; 
+  height: 125px; 
 }
 
 .bottom-button:hover {
     scale: 1.05;
 
+}
+.button-round1 {
+  background-image: url('../images/button.png');
+}
+
+.button-round2 {
+  background-image: url('../images/buttonRound2.png');
+}
+
+.button-round3 {
+  background-image: url('../images/buttonRound3.png');
+}
+
+.button-round4 {
+  background-image: url('../images/buttonRound4.png');
+}
+
+.button-round5 {
+  background-image: url('../images/buttonRound5.png'); 
+}
+.map-round1 {
+  background-image: url('../images/button.png');
+}
+
+.map-round2 {
+  background-image: url('../images/buttonRound2.png');
+}
+
+.map-round3 {
+  background-image: url('../images/buttonRound3.png');
+}
+
+.map-round4 {
+  background-image: url('../images/buttonRound4.png');
+}
+
+.map-round5 {
+  background-image: url('../images/buttonRound5.png');
 }
 
 

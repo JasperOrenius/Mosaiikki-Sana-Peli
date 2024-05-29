@@ -11,29 +11,29 @@ let wordItemList = [];
 
 const difficulties = {
     round1: {
-        rows: 8,
-        columns: 8,
+        rows: 10,
+        columns: 10,
         wordAmount: 4
     },
     round2: {
-        rows: 8,
-        columns: 8,
+        rows: 10,
+        columns: 10,
         wordAmount: 4
     },
     round3: {
-        rows: 8,
-        columns: 8,
+        rows: 10,
+        columns: 10,
         wordAmount: 4
     },
     round4: {
-        rows: 8,
-        columns: 8,
+        rows: 10,
+        columns: 10,
         wordAmount: 4
     },
     round5: {
-        rows: 8,
-        columns: 8,
-        wordAmount: 0
+        rows: 10,
+        columns: 10,
+        wordAmount: 4
     },
 };
 
@@ -397,19 +397,37 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function updateBackground() {
     const gameScreen = document.getElementById('gameScreen');
+    const gameButton = document.getElementById('nextButton');
+    const gameMap = document.getElementById('mapButton');
+    
     gameScreen.classList.remove('round1-bg', 'round2-bg', 'round3-bg', 'round4-bg', 'round5-bg');
+    gameButton.classList.remove('button-round1', 'button-round2', 'button-round3', 'button-round4', 'button-round5');
+    gameMap.classList.remove('map-round1', 'map-round2', 'map-round3', 'map-round4', 'map-round5');
+    
     if (currentDifficulty === 'round1') {
       gameScreen.classList.add('round1-bg');
+      gameButton.classList.add('button-round1');
+      gameMap.classList.add('map-round1');
     } else if (currentDifficulty === 'round2') {
       gameScreen.classList.add('round2-bg');
+      gameButton.classList.add('button-round2');
+      gameMap.classList.add('map-round2');
     } else if (currentDifficulty === 'round3') {
       gameScreen.classList.add('round3-bg');
+      gameButton.classList.add('button-round3');
+      gameMap.classList.add('map-round3');
     } else if (currentDifficulty === 'round4') {
       gameScreen.classList.add('round4-bg');
+      gameButton.classList.add('button-round4');
+      gameMap.classList.add('map-round4');
     } else if (currentDifficulty === 'round5') {
       gameScreen.classList.add('round5-bg');
+      gameButton.classList.add('button-round5');
+      gameMap.classList.add('map-round5');
     }
-  }
+}
+
+
 function moveToNextDifficulty() {
     if(currentDifficulty === 'round1') {
         currentDifficulty = 'round2';
