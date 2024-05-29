@@ -340,11 +340,13 @@ function showNextDifficultyScreen() {
     }
     const nextDifficultyScreen = document.getElementById('nextDifficultyScreen');
     nextDifficultyScreen.style.display = 'block';
-    nextDifficultyScreen.style.pointerEvents = 'all';
-    setTimeout(() => {
-        nextDifficultyScreen.classList.add('show');
-    }, 2400); 
+    nextDifficultyScreen.style.pointerEvents = 'none'; 
+    setTimeout(function() {
+        nextDifficultyScreen.style.pointerEvents = 'all'; 
+    }, 2400);
+    nextDifficultyScreen.classList.add('show');
 }
+
 
 function triggerAnimation() {
     const images = document.querySelectorAll('#animation-test img');

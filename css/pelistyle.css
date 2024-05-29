@@ -131,6 +131,7 @@ td {
   height: 230px;
   top: 160px;
   left: -20px;
+  pointer-events: none;
 }
 #lilypad {
   position: absolute;
@@ -145,27 +146,6 @@ td {
   height: 600px;
   z-index: 2;
 }
-#backButton {
-  position: absolute;
-  width: 60px;
-  height: 60px; 
-  background-size: contain;
-  background-repeat: no-repeat;
-  top: 10px;
-  left: 5px;
-  background-image: url('../images/back.png');
-  padding: 0;
-  border: none;
-  background-color:transparent;
-  outline:none;
-  z-index: 3; 
-}
-
-#backButton:hover {
-  transform: scale(1.1); 
-}
-
-
 #helpButton {
   align-self: flex-end;
   position: absolute;
@@ -239,7 +219,6 @@ td {
 }
 .bottom-button::before{
   content: '';
-  background-image: url('../images/check the map.png'); 
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -251,45 +230,16 @@ td {
   z-index: 6; 
 }
 #mapButton{
-  margin-top: 650px;
-  left: 23%;
+  left: 50%;
+  top: 97%;
 
 }
 #mapButton::before {
   background-image: url('../images/check the map.png');
   margin-top: -10px;
 }
-#nextButton{
-  margin-top: 650px;
-  right: -10%;
-}
-#nextButton::before {
-  background-image: url('../images/next text.png');
-  height: 125px; 
-}
-
 .bottom-button:hover {
     scale: 1.05;
-
-}
-.button-round1 {
-  background-image: url('../images/button.png');
-}
-
-.button-round2 {
-  background-image: url('../images/buttonRound2.png');
-}
-
-.button-round3 {
-  background-image: url('../images/buttonRound3.png');
-}
-
-.button-round4 {
-  background-image: url('../images/buttonRound4.png');
-}
-
-.button-round5 {
-  background-image: url('../images/buttonRound5.png'); 
 }
 .map-round1 {
   background-image: url('../images/button.png');
@@ -310,9 +260,6 @@ td {
 .map-round5 {
   background-image: url('../images/buttonRound5.png');
 }
-
-
-
 #wordList {
   margin-top: 10px;
   max-height: 400px;
@@ -598,4 +545,7 @@ td {
 }
 .animate11 {
   animation: fadeIn11 1s ease 2.2s forwards;
+}
+#nextButton{
+  z-index: 0;
 }
