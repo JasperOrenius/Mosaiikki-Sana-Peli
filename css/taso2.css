@@ -1,6 +1,6 @@
 #gameScreen {
-    width: 650px;
-    height: 700px;
+    width: 700px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
