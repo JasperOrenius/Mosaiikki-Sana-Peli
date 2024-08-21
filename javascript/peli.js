@@ -202,14 +202,17 @@ document.addEventListener('touchmove', handleTouchMove);
 document.addEventListener('touchend', handleTouchEnd);
 
 function handleMouseDown(event) {
-    isDragging = true;
-    startCell = getCellFromEvent(event);
+    const cell = getCellFromEvent(event);
+    if (cell) {  
+        isDragging = true;
+        startCell = cell;
+    }
 }
 
 function handleMouseMove(event) {
     if (isDragging) {
         const cell = getCellFromEvent(event);
-        if (cell) {
+        if (cell) {  
             endCell = cell;
             highlightCells(startCell, endCell);
         }
@@ -228,14 +231,20 @@ function handleMouseUp(event) {
 
 function handleTouchStart(event) {
     const touch = event.touches[0];
-    startCell = getCellFromTouchEvent(touch);
+    const cell = getCellFromTouchEvent(touch);
+    if (cell) { 
+        startCell = cell;
+    }
 }
 
 function handleTouchMove(event) {
     event.preventDefault();
     const touch = event.touches[0];
-    endCell = getCellFromTouchEvent(touch);
-    highlightCells(startCell, endCell);
+    const cell = getCellFromTouchEvent(touch);
+    if (cell) {  
+        endCell = cell;
+        highlightCells(startCell, endCell);
+    }
 }
 
 function handleTouchEnd(event) {
@@ -244,6 +253,7 @@ function handleTouchEnd(event) {
     }
     resetSelection();
 }
+
 
 function getCellFromEvent(event) {
     const target = event.target;

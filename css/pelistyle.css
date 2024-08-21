@@ -23,8 +23,8 @@ td {
   background-color: lightpink;
 }
 #gameScreen {
-  width: 650px;
-  height: 700px;
+  width: 700px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,8 +89,8 @@ td {
 #nextDifficultyScreen {
   opacity: 0;
   position: absolute;
-  width: 650px;
-  height: 700px;
+  width: 700px;
+  height: 650px;
   top: 10px;
   text-align: center;
   pointer-events: none;
@@ -116,15 +116,39 @@ td {
   transform: scale(1.1);
 }
 #background4 {
-  position:absolute; 
-  top:-50px; 
-  left:0;
-  width: 650px;
-  height: 700px;
+  position: absolute; 
+  top: -50px; 
+  left: 0;
+  width: 700px;
+  height: 650px;
   margin: 50px auto;
   text-align: center;
   z-index: 1;
+  background-size: cover; /* Adjust this as needed */
+  background-position: center; /* Adjust this as needed */
 }
+
+.help-round1-bg {
+  background-image: url('../images/background4.png');
+}
+
+.help-round2-bg {
+  background-image: url('../images/2.png');
+}
+
+.help-round3-bg {
+  background-image: url('../images/3.png');
+}
+
+.help-round4-bg {
+  background-image: url('../images/4.png');
+}
+
+.help-round5-bg {
+  background-image: url('../images/5.png');
+}
+
+
 #nextDifficultyScreen img[alt="red_ribon"] {
   position: absolute;
   width: 700px;
@@ -282,8 +306,8 @@ td {
   margin-bottom: 5px;
 }
 #helsinki {
-  bottom: 15px;
-  right: 360px;
+  bottom: 22px;
+  right: 380px;
   z-index: 2;
 }
 #jamsa {
@@ -293,11 +317,11 @@ td {
 }
 #joensuu {
   bottom: 160px;
-  right: 200px;
+  right: 240px;
   z-index: 2;
 }
 #jyvaskyla {
-  bottom: 150px;
+  bottom: 120px;
   left: 235px;
   z-index: 2;
 }
@@ -313,52 +337,52 @@ td {
 }
 #kuopio {
   bottom: 170px;
-  right: 260px;
+  right: 300px;
   z-index: 2;
 }
 #lahti {
   bottom: 65px;
-  right: 320px;
+  right: 360px;
   z-index: 2;
 }
 #mikkeli {
-  bottom: 110px;
-  right: 270px;
+  bottom: 100px;
+  right: 330px;
   z-index: 2;
 }
 #muurame {
-  bottom: 142px;
+  bottom: 130px;
   left: 232px;
   z-index: 2;
 }
 #oulu {
   bottom: 300px;
-  left: 210px;
+  left: 240px;
   z-index: 2;
 }
 #pori {
   bottom: 90px;
-  left: 100px;
+  left: 130px;
   z-index: 2;
 }
 #rovaniemi {
   bottom: 400px;
-  left: 210px;
+  left: 250px;
   z-index: 2;
 }
 #seinajoki {
   bottom: 165px;
-  left: 115px;
+  left: 145px;
   z-index: 2;
 }
 #tampere {
   bottom: 95px;
-  left: 155px;
+  left: 185px;
   z-index: 2;
 }
 #turku {
-  bottom: 40px;
-  left: 110px;
+  bottom: 25px;
+  left: 140px;
   z-index: 2;
 }
 #vaajakoski {

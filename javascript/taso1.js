@@ -13,27 +13,27 @@ const difficulties = {
     round1: {
         rows: 10,
         columns: 10,
-        wordAmount: 4
+        wordAmount: 0
     },
     round2: {
         rows: 10,
         columns: 10,
-        wordAmount: 4
+        wordAmount: 0
     },
     round3: {
         rows: 10,
         columns: 10,
-        wordAmount: 4
+        wordAmount: 0
     },
     round4: {
         rows: 10,
         columns: 10,
-        wordAmount: 4
+        wordAmount: 0
     },
     round5: {
         rows: 10,
         columns: 10,
-        wordAmount: 4
+        wordAmount: 0
     },
 };
 
@@ -401,31 +401,38 @@ function updateBackground() {
     const gameScreen = document.getElementById('gameScreen');
     const gameButton = document.getElementById('nextButton');
     const gameMap = document.getElementById('mapButton');
+    const gameHelp = document.getElementById('background4')
     
     gameScreen.classList.remove('round1-bg', 'round2-bg', 'round3-bg', 'round4-bg', 'round5-bg');
     gameButton.classList.remove('button-round1', 'button-round2', 'button-round3', 'button-round4', 'button-round5');
     gameMap.classList.remove('map-round1', 'map-round2', 'map-round3', 'map-round4', 'map-round5');
+    gameHelp.classList.remove('help-round1-bg','help-round2-bg','help-round3-bg','help-round4-bg', 'help-round5-bg')
     
     if (currentDifficulty === 'round1') {
       gameScreen.classList.add('round1-bg');
       gameButton.classList.add('button-round1');
       gameMap.classList.add('map-round1');
+      gameHelp.classList.add('help-round1-bg')
     } else if (currentDifficulty === 'round2') {
       gameScreen.classList.add('round2-bg');
       gameButton.classList.add('button-round2');
       gameMap.classList.add('map-round2');
+      gameHelp.classList.add('help-round2-bg')
     } else if (currentDifficulty === 'round3') {
       gameScreen.classList.add('round3-bg');
       gameButton.classList.add('button-round3');
       gameMap.classList.add('map-round3');
+      gameHelp.classList.add('help-round3-bg')
     } else if (currentDifficulty === 'round4') {
       gameScreen.classList.add('round4-bg');
       gameButton.classList.add('button-round4');
       gameMap.classList.add('map-round4');
+      gameHelp.classList.add('help-round4-bg')
     } else if (currentDifficulty === 'round5') {
       gameScreen.classList.add('round5-bg');
       gameButton.classList.add('button-round5');
       gameMap.classList.add('map-round5');
+      gameHelp.classList.add('help-round5-bg')
     }
 }
 
