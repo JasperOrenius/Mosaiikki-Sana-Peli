@@ -13,27 +13,27 @@ const difficulties = {
     round1: {
         rows: 10,
         columns: 10,
-        wordAmount: 0
+        wordAmount: 4
     },
     round2: {
         rows: 10,
         columns: 10,
-        wordAmount: 0
+        wordAmount: 4
     },
     round3: {
         rows: 10,
         columns: 10,
-        wordAmount: 0
+        wordAmount: 4
     },
     round4: {
         rows: 10,
         columns: 10,
-        wordAmount: 0
+        wordAmount: 4
     },
     round5: {
         rows: 10,
         columns: 10,
-        wordAmount: 0
+        wordAmount: 4
     },
 };
 
