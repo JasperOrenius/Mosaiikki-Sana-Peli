@@ -123,8 +123,8 @@ td {
   margin: 50px auto;
   text-align: center;
   z-index: 1;
-  background-size: cover; /* Adjust this as needed */
-  background-position: center; /* Adjust this as needed */
+  background-size: cover;
+  background-position: center;
 }
 
 .help-round1-bg {
